@@ -15,11 +15,24 @@ function CreateAccount(){
       return true;
   }
 
+  function validatePassword(password){
+      if (!password) {
+        setStatus('Error: password must not be empty');
+        setTimeout(() => setStatus(''),3000);
+        return false;
+      }
+      if (password.length < 8) {
+        setStatus('Error: password must have more than 8 characters')
+        return false
+      }
+      return true;
+  }
+
   function handleCreate(){
     console.log(name,email,password);
     if (!validate(name,     'name'))     return;
     if (!validate(email,    'email'))    return;
-    if (!validate(password, 'password')) return;
+    if (!validatePassword(password)) return;
     ctx.users.push({name,email,password,balance:100});
     setShow(false);
   }    
