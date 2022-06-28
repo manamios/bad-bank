@@ -22,7 +22,8 @@ function CreateAccount(){
         return false;
       }
       if (password.length < 8) {
-        setStatus('Error: password must have more than 8 characters')
+        setStatus('Error: password must have more than 8 characters');
+        setTimeout(() => setStatus(''),3000);
         return false
       }
       return true;
